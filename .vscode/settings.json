@@ -1,0 +1,14 @@
+{
+  "rubyLsp.rubyVersionManager": {
+    "identifier": "mise",
+    "miseExecutablePath": "/Users/danytlaw/.local/bin/mise"
+  },
+  "[ruby]": {
+    "editor.defaultFormatter": "Shopify.ruby-lsp",
+    "editor.formatOnSave": true
+  },
+  "rubyLsp.featureFlags": {
+    "tapiocaAddon": true
+  },
+  "workbench.colorTheme": "Monokai"
+}

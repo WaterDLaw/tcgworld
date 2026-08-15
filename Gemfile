@@ -52,6 +52,9 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  # Generate RBI files for Ruby LSP IntelliSense
+  gem "tapioca", require: false
 end
 
 group :development do
@@ -64,3 +67,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "tailwindcss-rails", "~> 4.6"
+
+gem "devise", "~> 5.0"

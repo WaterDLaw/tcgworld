@@ -1,0 +1,156 @@
+<div class="navbar bg-base-100 shadow-sm border-b border-base-200 px-4">
+  <div class="navbar-start">
+    <%= link_to "TCG WORLD", root_path, class: "btn btn-ghost text-xl font-bold" %>
+  </div>
+
+  <div class="navbar-center hidden md:flex">
+    <ul class="menu menu-horizontal px-1 gap-2">
+      <li><%= link_to "Home", root_path, class: "rounded-btn" %></li>
+      <li><%= link_to "About", pages_about_path, class: "rounded-btn" %></li>
+      <li><%= link_to "Contact", pages_contact_path, class: "rounded-btn" %></li>
+    </ul>
+  </div>
+
+  <div class="navbar-end gap-2">
+    <% if user_signed_in? %>
+      <%= link_to "Log Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "btn btn-ghost btn-sm md:btn-md" %>
+    <% else %>
+      <%= link_to "Log In", new_user_session_path, class: "btn btn-primary btn-sm md:btn-md" %>
+      <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-ghost btn-sm md:btn-md" %>
+    <% end %>
+
+    <div class="dropdown dropdown-end md:hidden">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+        </svg>
+      </div>
+      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-lg bg-base-100 rounded-box w-52 border border-base-200">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "About", pages_about_path %></li>
+        <li><%= link_to "Contact", pages_contact_path %></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="navbar bg-secondary text-secondary-content px-4 min-h-12 py-0 border-b border-secondary/20 shadow-md">
+  <div class="flex-1 overflow-x-auto scrollbar-none">
+    <ul class="menu menu-horizontal menu-sm p-0 gap-1 flex-nowrap">
+      <li>
+        <details class="dropdown">
+          <summary class="hover:bg-secondary-focus focus:bg-secondary-focus font-semibold">One Piece Card Game</summary>
+          <ul class="bg-base-100 text-base-content rounded-box shadow-lg min-w-max p-2 z-[50]">
+            <li><%= link_to "All One Piece", "#" %></li>
+            <li><%= link_to "Booster Packs", "#" %></li>
+            <li><%= link_to "Starter Decks", "#" %></li>
+            <li><%= link_to "Single Cards", "#" %></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details class="dropdown">
+          <summary class="hover:bg-secondary-focus focus:bg-secondary-focus font-semibold">Pokemon TCG</summary>
+          <ul class="bg-base-100 text-base-content rounded-box shadow-lg min-w-max p-2 z-[50]">
+            <li><%= link_to "All Pokemon", "#" %></li>
+            <li><%= link_to "Booster Boxes", "#" %></li>
+            <li><%= link_to "Elite Trainer Boxes", "#" %></li>
+            <li><%= link_to "Singles", "#" %></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details class="dropdown">
+          <summary class="hover:bg-secondary-focus focus:bg-secondary-focus font-semibold">Dragon Ball Super Fusion World</summary>
+          <ul class="bg-base-100 text-base-content rounded-box shadow-lg min-w-max p-2 z-[50]">
+            <li><%= link_to "All Dragon Ball", "#" %></li>
+            <li><%= link_to "Booster Packs", "#" %></li>
+            <li><%= link_to "Starter Decks", "#" %></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details class="dropdown">
+          <summary class="hover:bg-secondary-focus focus:bg-secondary-focus font-semibold">Naruto TCG</summary>
+          <ul class="bg-base-100 text-base-content rounded-box shadow-lg min-w-max p-2 z-[50]">
+            <li><%= link_to "All Naruto", "#" %></li>
+            <li><%= link_to "Booster Boxes", "#" %></li>
+            <li><%= link_to "Singles", "#" %></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details class="dropdown">
+          <summary class="hover:bg-secondary-focus focus:bg-secondary-focus font-semibold">Others</summary>
+          <ul class="bg-base-100 text-base-content rounded-box shadow-lg min-w-max p-2 z-[50]">
+            <li><%= link_to "Yu-Gi-Oh!", "#" %></li>
+            <li><%= link_to "Magic: The Gathering", "#" %></li>
+            <li><%= link_to "Card Accessories", "#" %></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<% if current_page?(root_path) %>
+  <div class="relative w-full overflow-hidden bg-base-100 border-b border-base-200"
+       data-controller="carousel"
+       data-action="mouseenter->carousel#pause mouseleave->carousel#resume">
+    <div class="carousel w-full h-[200px] sm:h-[300px] md:h-[400px]"
+         data-carousel-target="container">
+      <div id="slide1" class="carousel-item relative w-full">
+        <%= image_tag "one_piece_banner.webp", class: "w-full h-full object-cover" %>
+        <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center px-12 text-white">
+          <div>
+            <h2 class="text-3xl md:text-5xl font-black mb-2 tracking-wide uppercase drop-shadow-md">One Piece</h2>
+            <p class="text-sm md:text-lg opacity-90 max-w-md drop-shadow-md">Unleash the power of the pirates. Discover the latest boosters, starter decks, and singles!</p>
+          </div>
+        </div>
+        <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 justify-between">
+          <a href="#slide4" data-turbo="false" class="btn btn-circle btn-sm md:btn-md bg-black/30 text-white border-none hover:bg-black/60">❮</a>
+          <a href="#slide2" data-turbo="false" class="btn btn-circle btn-sm md:btn-md bg-black/30 text-white border-none hover:bg-black/60">❯</a>
+        </div>
+      </div>
+      <div id="slide2" class="carousel-item relative w-full">
+        <%= image_tag "pokemon_banner.webp", class: "w-full h-full object-cover" %>
+        <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center px-12 text-white">
+          <div>
+            <h2 class="text-3xl md:text-5xl font-black mb-2 tracking-wide uppercase drop-shadow-md">Pokemon TCG</h2>
+            <p class="text-sm md:text-lg opacity-90 max-w-md drop-shadow-md">Gotta catch 'em all! Explore Booster Boxes, Elite Trainer Boxes, and rare collectibles.</p>
+          </div>
+        </div>
+        <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 justify-between">
+          <a href="#slide1" data-turbo="false" class="btn btn-circle btn-sm md:btn-md bg-black/30 text-white border-none hover:bg-black/60">❮</a>
+          <a href="#slide3" data-turbo="false" class="btn btn-circle btn-sm md:btn-md bg-black/30 text-white border-none hover:bg-black/60">❯</a>
+        </div>
+      </div>
+      <div id="slide3" class="carousel-item relative w-full">
+        <%= image_tag "dragonball_ banner.jpeg", class: "w-full h-full object-cover" %>
+        <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center px-12 text-white">
+          <div>
+            <h2 class="text-3xl md:text-5xl font-black mb-2 tracking-wide uppercase drop-shadow-md">Dragon Ball Super</h2>
+            <p class="text-sm md:text-lg opacity-90 max-w-md drop-shadow-md">Fusion World awaits! Power up your deck and participate in intense battles.</p>
+          </div>
+        </div>
+        <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 justify-between">
+          <a href="#slide2" data-turbo="false" class="btn btn-circle btn-sm md:btn-md bg-black/30 text-white border-none hover:bg-black/60">❮</a>
+          <a href="#slide4" data-turbo="false" class="btn btn-circle btn-sm md:btn-md bg-black/30 text-white border-none hover:bg-black/60">❯</a>
+        </div>
+      </div>
+      <div id="slide4" class="carousel-item relative w-full">
+        <%= image_tag "naruto_banner.jpeg", class: "w-full h-full object-cover" %>
+        <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center px-12 text-white">
+          <div>
+            <h2 class="text-3xl md:text-5xl font-black mb-2 tracking-wide uppercase drop-shadow-md">Naruto TCG</h2>
+            <p class="text-sm md:text-lg opacity-90 max-w-md drop-shadow-md">Believe it! Assemble your team of ninja warriors and command the battlefield.</p>
+          </div>
+        </div>
+        <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 justify-between">
+          <a href="#slide3" data-turbo="false" class="btn btn-circle btn-sm md:btn-md bg-black/30 text-white border-none hover:bg-black/60">❮</a>
+          <a href="#slide1" data-turbo="false" class="btn btn-circle btn-sm md:btn-md bg-black/30 text-white border-none hover:bg-black/60">❯</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
